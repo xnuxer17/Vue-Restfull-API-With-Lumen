@@ -4,17 +4,15 @@
       <h1 class="mt-5 py-2 px-5 btn btn-danger">{{ counter }}</h1>
       <div class="row">
         <div class="col-2">
-          <button class="btn btn-success" @click="increment()">
-            +
-          </button>
-          <button class="btn btn-warning ml-2" @click="decrement()">
-            -
-          </button>
+          <button class="btn btn-success" @click="increment()">+</button>
+          <button class="btn btn-warning ml-2" @click="decrement()">-</button>
         </div>
       </div>
       <div class="mt-3">
         <h1>
           Nama: {{ fullname }}
+          <br />
+          Jumlah huruf: {{ jumlah }}
           <br />
           Total: Rp.{{ totalprice }}.00
         </h1>
@@ -28,6 +26,8 @@
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
@@ -36,8 +36,8 @@ export default {
       lastName: "Masruri",
       price: 50,
       diskon: 30,
-    };
-  },
+  }
+    },
   filters: {
     formatCurrency(value, currency) {
       var formatter = new Intl.NumberFormat("id-ID", {
@@ -62,6 +62,9 @@ export default {
     },
     totalprice: function total() {
       return (this.price * this.diskon) / 100;
+    },
+    jumlah: function count() {
+      return this.firstName.length + this.lastName.length
     },
   },
 };
